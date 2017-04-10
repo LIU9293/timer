@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Timer extends React.PureComponent{
+class TimerCore extends React.PureComponent{
   static propTypes = {
     length: PropTypes.number.isRequired,
     warningLength: PropTypes.number,
@@ -109,4 +109,4 @@ class Timer extends React.PureComponent{
   }
 }
 
-export default Timer;
+export default TimerCore;
