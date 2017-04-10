@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledTimer from '../styledTimer';
+import {
+  DoubleTimerWrapper,
+  TimerWrapper
+} from './style';
 
 class DoubleTimer extends React.PureComponent{
   static propTypes = {
@@ -9,17 +13,19 @@ class DoubleTimer extends React.PureComponent{
     onSecondEnd: PropTypes.func,
   }
 
-  side = this.props.config.start;
+  state = {
+    side: this.props.config.start
+  };
   going = false;
   timer = {};
 
   start = () => {
-    this.timer[this.side].timerCore.start();
+    this.timer[this.state.side].timerCore.start();
     this.going = true;
   }
 
   pause = () => {
-    this.timer[this.side].timerCore.pause();
+    this.timer[this.state.side].timerCore.pause();
     this.going = false;
   }
 
@@ -31,20 +37,20 @@ class DoubleTimer extends React.PureComponent{
 
   changeSide = () => {
     if(this.going){
-      if(this.side === 'positive'){
+      if(this.state.side === 'positive'){
         this.timer.positive.timerCore.pause();
         this.timer.negative.timerCore.start();
-        this.side = 'negative';
+        this.setState({side: 'negative'});
       } else {
         this.timer.negative.timerCore.pause();
         this.timer.positive.timerCore.start();
-        this.side = 'positive';
+        this.setState({side: 'positive'});
       }
     } else {
-      if(this.side === 'positive'){
-        this.side = 'negative';
+      if(this.state.side === 'positive'){
+        this.setState({side: 'negative'});
       } else {
-        this.side = 'positive';
+        this.setState({side: 'positive'});
       }
     }
   }
@@ -86,18 +92,24 @@ class DoubleTimer extends React.PureComponent{
   render(){
     const { limit } = this.props.config;
     return(
-      <div>
-        <StyledTimer
-          ref={timer => this.timer.positive = timer}
-          onEnd={() => this.onEnd('positive')}
-          length={limit.positive}
-        />
-        <StyledTimer
-          ref={timer => this.timer.negative = timer}
-          onEnd={() => this.onEnd('negative')}
-          length={limit.negative}
-        />
-      </div>
+      <DoubleTimerWrapper>
+        <TimerWrapper>
+          <StyledTimer
+            ref={timer => this.timer.positive = timer}
+            onEnd={() => this.onEnd('positive')}
+            length={limit.positive}
+            highlight={this.state.side === 'positive'}
+          />
+        </TimerWrapper>
+        <TimerWrapper>
+          <StyledTimer
+            ref={timer => this.timer.negative = timer}
+            onEnd={() => this.onEnd('negative')}
+            length={limit.negative}
+            highlight={this.state.side === 'negative'}
+          />
+        </TimerWrapper>
+      </DoubleTimerWrapper>
     );
   }
 }

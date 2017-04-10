@@ -5,6 +5,7 @@ import TimerCore from '../timerCore';
 import {
   TimerWrapper,
   TimerLayer,
+  Highlighter,
 } from './style';
 
 class StyledTimer extends React.PureComponent{
@@ -33,15 +34,15 @@ class StyledTimer extends React.PureComponent{
     return(
       <TimerWrapper>
         <TimerLayer>
-        <Circle
-          percent={this.state.percent.toString()}
-          strokeWidth="2"
-          strokeColor="#D3D3D3"
-          style={{width: '300px', height: '300px'}}
-          trailWidth="0"
-          trailColor="transparent"
-        />
-          </TimerLayer>
+          <Circle
+            percent={this.state.percent.toString()}
+            strokeWidth="2"
+            strokeColor="#D3D3D3"
+            style={{width: '300px', height: '300px'}}
+            trailWidth="0"
+            trailColor="transparent"
+          />
+        </TimerLayer>
         <TimerLayer>
           <TimerCore
             {...this.props}
@@ -50,6 +51,7 @@ class StyledTimer extends React.PureComponent{
             ref={timer => this.timerCore = timer}
           />
         </TimerLayer>
+        {this.props.highlight && <Highlighter />}
       </TimerWrapper>
     );
   }
