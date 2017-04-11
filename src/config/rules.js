@@ -1,4 +1,4 @@
-export const basic = {
+export default {
   section_1: {
     name: '正方一辩陈词',
     type: 'single',
@@ -66,7 +66,7 @@ export const basic = {
     start: 'positive'
   },
   section_11: {
-    name: '反方总结陈词'
+    name: '反方总结陈词',
     type: 'single',
     side: 'negative',
     limit: 240
