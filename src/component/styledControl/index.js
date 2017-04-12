@@ -43,9 +43,9 @@ class StyledControl extends React.PureComponent{
             <SidebarButton onClick={this.props.onSidebarTrigger} />
           </SidebarTrigger>
           {
-            this.props.section < this.props.MaxSection &&
+            this.props.currentSection < this.props.sectionLength &&
             <NextButton>
-              <NavLink to={`/timer/${this.props.section+1}`}>
+              <NavLink to={`/timer/${this.props.currentSection + 1}`}>
                 <NextSectionButton />
               </NavLink>
             </NextButton>
@@ -70,9 +70,9 @@ class StyledControl extends React.PureComponent{
             <SidebarButton onClick={this.props.onSidebarTrigger} />
           </SidebarTrigger>
           {
-            this.props.section < this.props.MaxSection &&
+            this.props.currentSection < this.props.sectionLength &&
             <NextButton>
-              <NavLink to={`/timer/${this.props.section+1}`}>
+              <NavLink to={`/timer/${this.props.currentSection + 1}`}>
                 <NextSectionButton />
               </NavLink>
             </NextButton>

@@ -22,7 +22,7 @@ class Section extends React.PureComponent{
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.section !== this.props.section && this.state.pause){
+    if(nextProps.currentSection !== this.props.currentSection && this.state.pause){
       this.setState({
         pause: false
       });
@@ -88,7 +88,7 @@ class Section extends React.PureComponent{
           ?  <SingleTimer ref={timer => this.singleTimer = timer} length={this.props.config.limit} />
           :  <DoubleTimer ref={timer => this.doubleTimer = timer} config={this.props.config} />
         }
-        <StyledBackground config={this.props.globalConfig} />
+        <StyledBackground config={this.props.globalConfig} player={this.props.player} />
         <StyledControl
           type={type}
           pause={this.state.pause}
@@ -100,8 +100,8 @@ class Section extends React.PureComponent{
           onDoublePause={this.onDoublePause}
           onDoubleStop={this.onDoubleStop}
           onChangeSide={this.onChangeSide}
-          section={this.props.section}
-          MaxSection={this.props.MaxSection}
+          currentSection={this.props.currentSection}
+          sectionLength={this.props.sectionLength}
         />
       </Wrapper>
     )

@@ -1,13 +1,11 @@
 import React from 'react';
 import Section from 'component/section';
-import Config from 'config/rules';
 import Sidebar from 'react-sidebar';
+import { connect } from 'react-redux';
 import SidebarContent from 'component/sidebarContent';
 import {
   FlexWrapper
 } from 'component/wrapper';
-
-const MaxSection = Object.keys(Config.sections).length;
 
 class Timer extends React.PureComponent{
   state = {
@@ -27,20 +25,24 @@ class Timer extends React.PureComponent{
   render(){
     const { params } = this.props.match;
     const section = params.section ? parseInt(params.section, 10) : 1;
+    if(section > this.props.SectionLength){
+      this.props.history.push('/timer/1');
+    }
     return(
       <FlexWrapper>
         <Sidebar
-          sidebar={<SidebarContent config={Config} step={section - 1} />}
+          sidebar={<SidebarContent sections={this.props.Sections} step={section - 1} />}
           open={this.state.sidebarOpen}
           onSetOpen={this.onSetSidebarOpen}
         >
           <Section
-            type={Config.sections[`section_${section}`].type}
-            config={Config.sections[`section_${section}`]}
-            globalConfig={Config}
-            section={section}
-            MaxSection={MaxSection}
+            type={this.props.Sections[`section_${section}`].type}
+            config={this.props.Sections[`section_${section}`]}
+            sections={this.props.Sections}
+            currentSection={section}
+            sectionLength={this.props.SectionLength}
             onSidebarTrigger={this.openSidebar}
+            player={this.props.PlayerInfo}
           />
         </Sidebar>
       </FlexWrapper>
@@ -48,4 +50,12 @@ class Timer extends React.PureComponent{
   }
 }
 
-export default Timer;
+function mapStateToProps(state){
+  return{
+    PlayerInfo: state.PlayerInfo,
+    Sections: state.Sections,
+    SectionLength: Object.keys(state.Sections).length,
+  }
+}
+
+export default connect(mapStateToProps)(Timer);

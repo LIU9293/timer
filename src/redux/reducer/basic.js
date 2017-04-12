@@ -30,3 +30,12 @@ export const PlayerInfo = (state = PlayerInfoInit, action) => {
       return state;
   }
 };
+
+export const Sections = (state = {}, action) => {
+  switch (action.type) {
+    case 'UPDATE_SECTIONS':
+      return action.sections;
+    default:
+      return state;
+  }
+}

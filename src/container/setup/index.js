@@ -2,8 +2,11 @@ import React from 'react';
 import { FlexWrapper } from 'component/wrapper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import { message } from 'antd';
 import { connect } from 'react-redux';
+import { xiaozusai, taotaisai } from 'config/rules';
 import {
   FormWrapper,
 } from './style';
@@ -13,7 +16,8 @@ class Setup extends React.PureComponent{
     positiveName: '',
     positiveTitle: '',
     negativeName: '',
-    negativeTilte: '',
+    negativeTitle: '',
+    type: 'xiaozusai',
   }
 
   onChange = (e, key) => {
@@ -39,6 +43,22 @@ class Setup extends React.PureComponent{
         title: this.state.negativeTitle,
       },
     });
+    if(this.state.type === 'xiaozusai'){
+      this.props.dispatch({
+        type: 'UPDATE_SECTIONS',
+        sections: xiaozusai
+      });
+    } else {
+      this.props.dispatch({
+        type: 'UPDATE_SECTIONS',
+        sections: taotaisai
+      });
+    }
+    this.props.history.push('/timer/1');
+  }
+
+  onTypeChange = (e, index, value) => {
+    this.setState({type: value})
   }
 
   render(){
@@ -63,8 +83,17 @@ class Setup extends React.PureComponent{
           <TextField
             floatingLabelText="反方辩题"
             value={this.state.negativeTitle}
-            onChange={(e) => this.onChange(e, 'negativeTilte')}
+            onChange={(e) => this.onChange(e, 'negativeTitle')}
           />
+          <SelectField
+            floatingLabelText="赛制"
+            value={this.state.type}
+            onChange={this.onTypeChange}
+            style={{margin: '30px 0'}}
+          >
+            <MenuItem value={'xiaozusai'} primaryText="小组赛" />
+            <MenuItem value={'taotaisai'} primaryText="淘汰赛" />
+          </SelectField>
           <RaisedButton
             label="确定"
             primary={true}

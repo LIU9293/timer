@@ -6,7 +6,7 @@ class StyledBackground extends React.PureComponent{
   render(){
     return(
       <AbsWrapper>
-        <TitleArea config={this.props.config} />
+        <TitleArea config={this.props.config} player={this.props.player} />
       </AbsWrapper>
     )
   }
