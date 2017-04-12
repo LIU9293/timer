@@ -10,11 +10,22 @@ import {
 class Section extends React.PureComponent{
   static propTypes = {
     type: PropTypes.oneOf(['single', 'double']).isRequired,
-    config: PropTypes.object.isRequired
+    config: PropTypes.object.isRequired,
+    section: PropTypes.number.isRequired,
+    MaxSection: PropTypes.number.isRequired,
+    onSidebarTrigger: PropTypes.func
   }
 
   state = {
     pause: false,
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.section !== this.props.section && this.state.pause){
+      this.setState({
+        pause: false
+      });
+    }
   }
 
   onDoubleStart = () => {
@@ -67,10 +78,6 @@ class Section extends React.PureComponent{
     }
   }
 
-  onNextSection = () => {
-
-  }
-
   render(){
     const { type } = this.props;
     if(type === 'single'){
@@ -83,7 +90,9 @@ class Section extends React.PureComponent{
             onSingleStart={this.onSingleStart}
             onSinglePause={this.onSinglePause}
             onSingleStop={this.onSingleStop}
-            onNextSection={this.onNextSection}
+            onSidebarTrigger={this.props.onSidebarTrigger}
+            section={this.props.section}
+            MaxSection={this.props.MaxSection}
           />
         </Wrapper>
       )
@@ -98,7 +107,9 @@ class Section extends React.PureComponent{
             onDoublePause={this.onDoublePause}
             onDoubleStop={this.onDoubleStop}
             onChangeSide={this.onChangeSide}
-            onNextSection={this.onNextSection}
+            onSidebarTrigger={this.props.onSidebarTrigger}
+            section={this.props.section}
+            MaxSection={this.props.MaxSection}
           />
         </Wrapper>
       )

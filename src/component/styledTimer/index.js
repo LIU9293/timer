@@ -9,10 +9,19 @@ import {
   TimerWrapperInner,
 } from './style';
 import fontStyle from './fontStyle';
+import './index.css';
 
 class StyledTimer extends React.PureComponent{
   static propTypes = {
     length: PropTypes.number.isRequired
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.length !== this.props.length){
+      this.setState({
+        percent: 100
+      });
+    }
   }
 
   state = {
@@ -52,6 +61,8 @@ class StyledTimer extends React.PureComponent{
               onStop={this.onStop}
               onGoing={this.onGoing}
               style={fontStyle}
+              textClass={'timer-class'}
+              textClassLast={'timer-class-last'}
               ref={timer => this.timerCore = timer}
             />
           </TimerLayer>

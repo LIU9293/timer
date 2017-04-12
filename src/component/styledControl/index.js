@@ -1,20 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import {
   StartButton,
   ChangeSideButton,
   NextSectionButton,
   StopButton,
+  SidebarButton,
 } from '../controlButton';
 import {
   ControlWrapper,
   NextButton,
+  SidebarTrigger,
 } from './style';
 
 class StyledControl extends React.PureComponent{
   static propTypes = {
     type: PropTypes.string.isRequired,
     pause: PropTypes.bool.isRequired,
+    section: PropTypes.number.isRequired,
+    MaxSection: PropTypes.number.isRequired,
   }
 
   static defaultProps = {
@@ -34,11 +39,17 @@ class StyledControl extends React.PureComponent{
           <StopButton
             onClick={this.props.onSingleStop}
           />
-          <NextButton>
-            <NextSectionButton
-              onClick={this.props.onNextSection}
-            />
-          </NextButton>
+          <SidebarTrigger>
+            <SidebarButton onClick={this.props.onSidebarTrigger} />
+          </SidebarTrigger>
+          {
+            this.props.section < this.props.MaxSection &&
+            <NextButton>
+              <NavLink to={`/timer/${this.props.section+1}`}>
+                <NextSectionButton />
+              </NavLink>
+            </NextButton>
+          }
         </ControlWrapper>
       );
     } else {
@@ -55,11 +66,17 @@ class StyledControl extends React.PureComponent{
           <ChangeSideButton
             onClick={this.props.onChangeSide}
           />
-          <NextButton>
-            <NextSectionButton
-              onClick={this.props.onNextSection}
-            />
-          </NextButton>
+          <SidebarTrigger>
+            <SidebarButton onClick={this.props.onSidebarTrigger} />
+          </SidebarTrigger>
+          {
+            this.props.section < this.props.MaxSection &&
+            <NextButton>
+              <NavLink to={`/timer/${this.props.section+1}`}>
+                <NextSectionButton />
+              </NavLink>
+            </NextButton>
+          }
         </ControlWrapper>
       );
     }

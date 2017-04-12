@@ -75,9 +75,16 @@ function StopButton(props){
   )
 }
 
+function SidebarButton(props){
+  return(
+    <Button {...props} type="primary" shape="circle" icon="bars" size="large" />
+  )
+}
+
 export {
   StartButton,
   ChangeSideButton,
   NextSectionButton,
   StopButton,
+  SidebarButton,
 };

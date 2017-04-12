@@ -28,6 +28,19 @@ class TimerCore extends React.PureComponent{
     }
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.length !== this.props.length){
+      this.setState({
+        secondsLeft: nextProps.length,
+        going: false,
+      });
+      if(this.t){
+        clearInterval(this.t);
+        this.t = null;
+      }
+    }
+  }
+
   getTime = (sec) => {
     const min = parseInt(sec/60, 10);
     let seconds = sec - (60 * min);
@@ -101,8 +114,12 @@ class TimerCore extends React.PureComponent{
   }
 
   render(){
+    const lastTen = this.state.secondsLeft < 10 && this.state.going;
     return(
-      <div style={this.props.style}>
+      <div
+        style={this.props.style}
+        className={lastTen ? this.props.textClassLast : this.props.textClass }
+      >
         {this.getTime(this.state.secondsLeft)}
       </div>
     )
