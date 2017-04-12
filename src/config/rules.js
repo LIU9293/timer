@@ -188,13 +188,13 @@ export const taotaisai = {
     side: 'positive',
     limit: 240
   },
-  section_15: {
+  section_14: {
     name: '奇袭 - 申论',
     type: 'single',
     side: '',
     limit: 120
   },
-  section_16: {
+  section_15: {
     name: '奇袭 - 质询',
     type: 'single',
     side: '',

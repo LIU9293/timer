@@ -16,7 +16,7 @@ class Routes extends Component{
           <Route path="/timer/:section" component={Timer} />
           <Route path="/timer" component={Timer} />
           <Route path="/setup" component={Setup} />
-          <Redirect from="*" to="/timer/1"/>
+          <Redirect from="*" to="/setup"/>
         </Switch>
       </Router>
     )
