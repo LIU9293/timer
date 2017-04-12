@@ -3,9 +3,16 @@ import styled from 'styled-components';
 const size = '300px';
 
 export const TimerWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TimerWrapperInner = styled.div`
   height: ${size};
   width: ${size};
-  display: block;
+  position: relative;
 `;
 
 export const TimerLayer = styled.div`

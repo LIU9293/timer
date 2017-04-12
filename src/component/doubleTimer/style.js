@@ -6,10 +6,3 @@ export const DoubleTimerWrapper = styled.div`
   display: flex;
   flex-direction: row;
 `;
-
-export const TimerWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;

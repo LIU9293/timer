@@ -78,7 +78,11 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'component': paths.appSrc + '/component',
+      'container': paths.appSrc + '/container',
+      'redux': paths.appSrc + '/redux',
+      'config': paths.appSrc + '/config'
     }
   },
 
@@ -150,7 +154,7 @@ module.exports = {
       // allow it implicitly so we also enable it.
       {
         test: /\.less$/,
-        loader: 'style!css!postcss!less?{modifyVars:{"@primary-color":"#1DA57A"}}'
+        loader: 'style!css!postcss!less?{modifyVars:{"@primary-color":"rgb(73, 80, 87)"}}'
       },
       {
         test: /\.json$/,

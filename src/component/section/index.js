@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DoubleTimer from '../doubleTimer';
-import SingleTimer from '../styledTimer';
+import DoubleTimer from 'component/doubleTimer';
+import SingleTimer from 'component/styledTimer';
+import StyledControl from "component/styledControl";
 import {
-  StartButton,
-  ChangeSideButton,
-  NextSectionButton,
-  StopButton,
-} from '../controlButton';
-import {
-  Wrapper,
-  ControlWrapper,
+  Wrapper
 } from './style';
 
 class Section extends React.PureComponent{
@@ -83,41 +77,29 @@ class Section extends React.PureComponent{
       return(
         <Wrapper>
           <SingleTimer ref={timer => this.singleTimer = timer} length={this.props.config.limit} />
-          <ControlWrapper>
-            <StartButton
-              onStart={this.onSingleStart}
-              onPause={this.onSinglePause}
-              pause={this.state.pause}
-            />
-            <StopButton
-              onClick={this.onSingleStop}
-            />
-            <NextSectionButton
-              onClick={this.onNextSection}
-            />
-          </ControlWrapper>
+          <StyledControl
+            type={'single'}
+            pause={this.state.pause}
+            onSingleStart={this.onSingleStart}
+            onSinglePause={this.onSinglePause}
+            onSingleStop={this.onSingleStop}
+            onNextSection={this.onNextSection}
+          />
         </Wrapper>
       )
     } else {
       return(
         <Wrapper>
           <DoubleTimer ref={timer => this.doubleTimer = timer} config={this.props.config} />
-          <ControlWrapper>
-            <StartButton
-              onStart={this.onDoubleStart}
-              onPause={this.onDoublePause}
-              pause={this.state.pause}
-            />
-            <StopButton
-              onClick={this.onDoubleStop}
-            />
-            <ChangeSideButton
-              onClick={this.onChangeSide}
-            />
-            <NextSectionButton
-              onClick={this.onNextSection}
-            />
-          </ControlWrapper>
+          <StyledControl
+            type={'double'}
+            pause={this.state.pause}
+            onDoubleStart={this.onDoubleStart}
+            onDoublePause={this.onDoublePause}
+            onDoubleStop={this.onDoubleStop}
+            onChangeSide={this.onChangeSide}
+            onNextSection={this.onNextSection}
+          />
         </Wrapper>
       )
     }

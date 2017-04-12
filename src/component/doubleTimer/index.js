@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledTimer from '../styledTimer';
+import StyledTimer from 'component/styledTimer';
 import {
-  DoubleTimerWrapper,
-  TimerWrapper
+  DoubleTimerWrapper
 } from './style';
 
 class DoubleTimer extends React.PureComponent{
@@ -93,22 +92,18 @@ class DoubleTimer extends React.PureComponent{
     const { limit } = this.props.config;
     return(
       <DoubleTimerWrapper>
-        <TimerWrapper>
-          <StyledTimer
-            ref={timer => this.timer.positive = timer}
-            onEnd={() => this.onEnd('positive')}
-            length={limit.positive}
-            highlight={this.state.side === 'positive'}
-          />
-        </TimerWrapper>
-        <TimerWrapper>
-          <StyledTimer
-            ref={timer => this.timer.negative = timer}
-            onEnd={() => this.onEnd('negative')}
-            length={limit.negative}
-            highlight={this.state.side === 'negative'}
-          />
-        </TimerWrapper>
+        <StyledTimer
+          ref={timer => this.timer.positive = timer}
+          onEnd={() => this.onEnd('positive')}
+          length={limit.positive}
+          highlight={this.state.side === 'positive'}
+        />
+        <StyledTimer
+          ref={timer => this.timer.negative = timer}
+          onEnd={() => this.onEnd('negative')}
+          length={limit.negative}
+          highlight={this.state.side === 'negative'}
+        />
       </DoubleTimerWrapper>
     );
   }

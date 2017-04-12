@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Circle } from 'rc-progress'
-import TimerCore from '../timerCore';
+import TimerCore from 'component/timerCore';
 import {
   TimerWrapper,
   TimerLayer,
   Highlighter,
+  TimerWrapperInner,
 } from './style';
+import fontStyle from './fontStyle';
 
 class StyledTimer extends React.PureComponent{
   static propTypes = {
@@ -33,25 +35,28 @@ class StyledTimer extends React.PureComponent{
   render(){
     return(
       <TimerWrapper>
-        <TimerLayer>
-          <Circle
-            percent={this.state.percent.toString()}
-            strokeWidth="2"
-            strokeColor="#D3D3D3"
-            style={{width: '300px', height: '300px'}}
-            trailWidth="0"
-            trailColor="transparent"
-          />
-        </TimerLayer>
-        <TimerLayer>
-          <TimerCore
-            {...this.props}
-            onStop={this.onStop}
-            onGoing={this.onGoing}
-            ref={timer => this.timerCore = timer}
-          />
-        </TimerLayer>
-        {this.props.highlight && <Highlighter />}
+        <TimerWrapperInner>
+          <TimerLayer>
+            <Circle
+              percent={this.state.percent.toString()}
+              strokeWidth="2"
+              strokeColor="#D3D3D3"
+              style={{width: '300px', height: '300px'}}
+              trailWidth="0"
+              trailColor="transparent"
+            />
+          </TimerLayer>
+          <TimerLayer>
+            <TimerCore
+              {...this.props}
+              onStop={this.onStop}
+              onGoing={this.onGoing}
+              style={fontStyle}
+              ref={timer => this.timerCore = timer}
+            />
+          </TimerLayer>
+          {this.props.highlight && <Highlighter />}
+        </TimerWrapperInner>
       </TimerWrapper>
     );
   }

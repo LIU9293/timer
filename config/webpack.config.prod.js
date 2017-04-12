@@ -82,7 +82,11 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      'component': paths.appSrc + '/component',
+      'container': paths.appSrc + '/container',
+      'redux': paths.appSrc + '/redux',
+      'config': paths.appSrc + '/config'
     }
   },
 
@@ -154,7 +158,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        loader: 'style!css!postcss!less?{modifyVars:{"@primary-color":"#1DA57A"}}'
+        loader: 'style!css!postcss!less?{modifyVars:{"@primary-color":"rgb(73, 80, 87)"}}'
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.

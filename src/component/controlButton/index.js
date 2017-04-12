@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd';
+import ControlButtonStyle from './style';
 
 function StartButton(props){
   return(
@@ -9,6 +10,7 @@ function StartButton(props){
       icon={props.pause ? 'pause' : 'caret-right'}
       size={'large'}
       onClick={props.pause ? props.onPause : props.onStart}
+      style={ControlButtonStyle}
     >
       {
         props.pause
@@ -38,6 +40,7 @@ function ChangeSideButton(props){
       type={'primary'}
       icon={'swap'}
       size={'large'}
+      style={ControlButtonStyle}
     >
       {'换边'}
     </Button>
@@ -51,6 +54,7 @@ function NextSectionButton(props){
       type={'primary'}
       icon={'arrow-right'}
       size={'large'}
+      style={ControlButtonStyle}
     >
       {'结束'}
     </Button>
@@ -64,6 +68,7 @@ function StopButton(props){
       type={'primary'}
       icon={'close-square'}
       size={'large'}
+      style={ControlButtonStyle}
     >
       {'停止'}
     </Button>
