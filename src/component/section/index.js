@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DoubleTimer from 'component/doubleTimer';
 import SingleTimer from 'component/styledTimer';
+import StyledBackground from 'component/styledBackground';
 import StyledControl from "component/styledControl";
 import {
   Wrapper
@@ -80,40 +81,30 @@ class Section extends React.PureComponent{
 
   render(){
     const { type } = this.props;
-    if(type === 'single'){
-      return(
-        <Wrapper>
-          <SingleTimer ref={timer => this.singleTimer = timer} length={this.props.config.limit} />
-          <StyledControl
-            type={'single'}
-            pause={this.state.pause}
-            onSingleStart={this.onSingleStart}
-            onSinglePause={this.onSinglePause}
-            onSingleStop={this.onSingleStop}
-            onSidebarTrigger={this.props.onSidebarTrigger}
-            section={this.props.section}
-            MaxSection={this.props.MaxSection}
-          />
-        </Wrapper>
-      )
-    } else {
-      return(
-        <Wrapper>
-          <DoubleTimer ref={timer => this.doubleTimer = timer} config={this.props.config} />
-          <StyledControl
-            type={'double'}
-            pause={this.state.pause}
-            onDoubleStart={this.onDoubleStart}
-            onDoublePause={this.onDoublePause}
-            onDoubleStop={this.onDoubleStop}
-            onChangeSide={this.onChangeSide}
-            onSidebarTrigger={this.props.onSidebarTrigger}
-            section={this.props.section}
-            MaxSection={this.props.MaxSection}
-          />
-        </Wrapper>
-      )
-    }
+    return(
+      <Wrapper>
+        {
+          type === 'single'
+          ?  <SingleTimer ref={timer => this.singleTimer = timer} length={this.props.config.limit} />
+          :  <DoubleTimer ref={timer => this.doubleTimer = timer} config={this.props.config} />
+        }
+        <StyledBackground config={this.props.globalConfig} />
+        <StyledControl
+          type={type}
+          pause={this.state.pause}
+          onSingleStart={this.onSingleStart}
+          onSinglePause={this.onSinglePause}
+          onSingleStop={this.onSingleStop}
+          onSidebarTrigger={this.props.onSidebarTrigger}
+          onDoubleStart={this.onDoubleStart}
+          onDoublePause={this.onDoublePause}
+          onDoubleStop={this.onDoubleStop}
+          onChangeSide={this.onChangeSide}
+          section={this.props.section}
+          MaxSection={this.props.MaxSection}
+        />
+      </Wrapper>
+    )
   }
 }
 

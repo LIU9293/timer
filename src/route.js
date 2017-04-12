@@ -6,6 +6,7 @@ import {
   Redirect
 } from 'react-router-dom'
 import Timer from 'container/timer';
+import Setup from 'container/setup';
 
 class Routes extends Component{
   render(){
@@ -14,6 +15,7 @@ class Routes extends Component{
         <Switch>
           <Route path="/timer/:section" component={Timer} />
           <Route path="/timer" component={Timer} />
+          <Route path="/setup" component={Setup} />
           <Redirect from="*" to="/timer/1"/>
         </Switch>
       </Router>

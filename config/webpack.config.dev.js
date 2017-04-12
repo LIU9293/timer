@@ -81,7 +81,7 @@ module.exports = {
       'react-native': 'react-native-web',
       'component': paths.appSrc + '/component',
       'container': paths.appSrc + '/container',
-      'redux': paths.appSrc + '/redux',
+      'Redux': paths.appSrc + '/redux',
       'config': paths.appSrc + '/config'
     }
   },

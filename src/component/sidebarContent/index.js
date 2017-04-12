@@ -10,7 +10,7 @@ const Step = Steps.Step;
 
 class SidebarContent extends React.PureComponent{
   render(){
-    const { title, sections } = this.props.config;
+    const { sections } = this.props.config;
     const mySteps = Object.values(sections).map((section, index) => (
       <Step
         title={<NavLink to={`/timer/${index+1}`}>{section.name}</NavLink>}
@@ -19,7 +19,8 @@ class SidebarContent extends React.PureComponent{
     ));
     return(
       <SidebarWrapper>
-        <h2>{title}</h2>
+        <h2>{'进度'}</h2>
+        <hr />
         <StepWrapper>
           <Steps direction="vertical" current={this.props.step}>
             {mySteps}

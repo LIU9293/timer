@@ -7,6 +7,8 @@ export const FlexWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex: 1;
+  flex-direction: column;
+  background: ${props => props.background || '#fff'}
 `;
 
 export const AbsWrapper = styled.div`

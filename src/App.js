@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Router from './route';
-import './App.css';
+import store from 'Redux/store';
+import { Provider } from 'react-redux';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Provider store={store}>
         <Router />
-      </div>
+      </Provider>
     );
   }
 }

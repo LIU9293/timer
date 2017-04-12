@@ -1,13 +1,14 @@
 export default {
   positive: {
     name: '南京审计大学',
+    title: '正方辩题',
     image: ''
   },
   negative: {
     name: '南京审计大学',
+    title: '反方辩题',
     image: ''
   },
-  title: '辩论标题',
   sections: {
     section_1: {
       name: '正方一辩陈词',

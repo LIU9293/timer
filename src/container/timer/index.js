@@ -37,6 +37,7 @@ class Timer extends React.PureComponent{
           <Section
             type={Config.sections[`section_${section}`].type}
             config={Config.sections[`section_${section}`]}
+            globalConfig={Config}
             section={section}
             MaxSection={MaxSection}
             onSidebarTrigger={this.openSidebar}
