@@ -1,5 +1,5 @@
 const basic = {
-  color: 'rgb(52, 58, 64)',
+  color: 'rgba(91, 122, 121, 0.9)',
   fontSize: '30px'
 }
 

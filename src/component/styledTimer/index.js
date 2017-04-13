@@ -17,10 +17,11 @@ class StyledTimer extends React.PureComponent{
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.length !== this.props.length){
+    if(nextProps.currentSection !== this.props.currentSection){
       this.setState({
         percent: 100
       });
+      this.timerCore.stop();
     }
   }
 
@@ -48,8 +49,8 @@ class StyledTimer extends React.PureComponent{
           <TimerLayer>
             <Circle
               percent={this.state.percent.toString()}
-              strokeWidth="2"
-              strokeColor="#D3D3D3"
+              strokeWidth="1"
+              strokeColor="hsla(211, 26%, 85%, 0.68)"
               style={{width: '300px', height: '300px'}}
               trailWidth="0"
               trailColor="transparent"

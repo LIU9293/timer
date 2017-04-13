@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
-import ControlButtonStyle from './style';
+import { Icon } from 'antd';
+import {
+  ControlButton
+} from './style';
+
+const iconStyle = {
+  fontSize: '40px',
+  color: 'rgba(91, 122, 121, 0.6)',
+  margin: '10px'
+}
 
 function StartButton(props){
   return(
-    <Button
-      type={'primary'}
-      icon={props.pause ? 'pause' : 'caret-right'}
-      size={'large'}
-      onClick={props.pause ? props.onPause : props.onStart}
-      style={ControlButtonStyle}
-    >
-      {
-        props.pause
-        ? '暂停'
-        : '开始'
-      }
-    </Button>
+    <ControlButton onClick={props.pause ? props.onPause : props.onStart}>
+      <Icon
+        type={props.pause ? 'pause' : 'right'}
+        style={iconStyle}
+      />
+    </ControlButton>
   )
 }
 
@@ -35,49 +36,56 @@ StartButton.defaultProps = {
 
 function ChangeSideButton(props){
   return(
-    <Button
-      {...props}
-      type={'primary'}
-      icon={'swap'}
-      size={'large'}
-      style={ControlButtonStyle}
-    >
-      {'换边'}
-    </Button>
+    <ControlButton {...props}>
+      <Icon
+        type={'swap'}
+        style={iconStyle}
+      />
+    </ControlButton>
+  )
+}
+
+function PrevioutSectionButton(props){
+  return(
+    <ControlButton {...props}>
+      <Icon
+        type={'arrow-left'}
+        style={iconStyle}
+      />
+    </ControlButton>
   )
 }
 
 function NextSectionButton(props){
   return(
-    <Button
-      {...props}
-      type={'primary'}
-      icon={'arrow-right'}
-      size={'large'}
-      style={ControlButtonStyle}
-    >
-      {'结束'}
-    </Button>
+    <ControlButton {...props}>
+      <Icon
+        type={'arrow-right'}
+        style={iconStyle}
+      />
+    </ControlButton>
   )
 }
 
 function StopButton(props){
   return(
-    <Button
-      {...props}
-      type={'primary'}
-      icon={'close-square'}
-      size={'large'}
-      style={ControlButtonStyle}
-    >
-      {'停止'}
-    </Button>
+    <ControlButton {...props}>
+      <Icon
+        type={'close'}
+        style={iconStyle}
+      />
+    </ControlButton>
   )
 }
 
 function SidebarButton(props){
   return(
-    <Button {...props} type="primary" shape="circle" icon="bars" size="large" />
+    <ControlButton {...props}>
+      <Icon
+        type={'bars'}
+        style={iconStyle}
+      />
+    </ControlButton>
   )
 }
 
@@ -85,6 +93,7 @@ export {
   StartButton,
   ChangeSideButton,
   NextSectionButton,
+  PrevioutSectionButton,
   StopButton,
   SidebarButton,
 };

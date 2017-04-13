@@ -12,13 +12,14 @@ export const ControlWrapper = styled.div`
   justify-content: center;
 `;
 
-export const NextButton = styled.div`
+export const NavArea = styled.div`
   position: absolute;
   right: 30px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 `;
 
 export const SidebarTrigger = styled.div`

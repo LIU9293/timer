@@ -43,6 +43,7 @@ class Timer extends React.PureComponent{
             sectionLength={this.props.SectionLength}
             onSidebarTrigger={this.openSidebar}
             player={this.props.PlayerInfo}
+            globalConfig={this.props.Sections}
           />
         </Sidebar>
       </FlexWrapper>

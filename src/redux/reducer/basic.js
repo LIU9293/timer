@@ -1,3 +1,5 @@
+import { xiaozusai } from 'config/rules';
+
 const PlayerInfoInit = {
   positive: {
     name: '',
@@ -31,7 +33,7 @@ export const PlayerInfo = (state = PlayerInfoInit, action) => {
   }
 };
 
-export const Sections = (state = {}, action) => {
+export const Sections = (state = xiaozusai, action) => {
   switch (action.type) {
     case 'UPDATE_SECTIONS':
       return action.sections;

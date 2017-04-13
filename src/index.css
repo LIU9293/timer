@@ -4,13 +4,13 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto,Oxygen, "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 
 #root {
+  font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", "Segoe UI", Roboto,Oxygen, "Helvetica Neue", sans-serif;
   height: 100%;
   width: 100%;
 }

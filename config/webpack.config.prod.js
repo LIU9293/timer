@@ -1,5 +1,3 @@
-'use strict';
-
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -8,8 +6,6 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
-
-
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -86,7 +82,8 @@ module.exports = {
       'component': paths.appSrc + '/component',
       'container': paths.appSrc + '/container',
       'Redux': paths.appSrc + '/redux',
-      'config': paths.appSrc + '/config'
+      'config': paths.appSrc + '/config',
+      'public': paths.appSrc + '/public'
     }
   },
 

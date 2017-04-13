@@ -4,7 +4,7 @@ export const TitleAreaWrapper = styled.div`
   width: 100%;
   height: 160px;
   position: absolute;
-  background-color: rgba(134, 142, 150, 0.3);
+  background: linear-gradient(to top, transparent, rgba(56, 217, 169, 0.7));
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -16,4 +16,15 @@ export const SideContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: ${props => props.type === 'positive' ? 'left' : 'right'}
+`;
+
+export const CentralContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`;
+
+export const HeaderLabel = styled.div`
+  font-size: 24px;
+  color: white;
 `;

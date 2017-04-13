@@ -4,13 +4,14 @@ import { NavLink } from 'react-router-dom';
 import {
   StartButton,
   ChangeSideButton,
+  PrevioutSectionButton,
   NextSectionButton,
   StopButton,
   SidebarButton,
 } from '../controlButton';
 import {
   ControlWrapper,
-  NextButton,
+  NavArea,
   SidebarTrigger,
 } from './style';
 
@@ -18,8 +19,8 @@ class StyledControl extends React.PureComponent{
   static propTypes = {
     type: PropTypes.string.isRequired,
     pause: PropTypes.bool.isRequired,
-    section: PropTypes.number.isRequired,
-    MaxSection: PropTypes.number.isRequired,
+    currentSection: PropTypes.number.isRequired,
+    sectionLength: PropTypes.number.isRequired,
   }
 
   static defaultProps = {
@@ -42,14 +43,20 @@ class StyledControl extends React.PureComponent{
           <SidebarTrigger>
             <SidebarButton onClick={this.props.onSidebarTrigger} />
           </SidebarTrigger>
-          {
-            this.props.currentSection < this.props.sectionLength &&
-            <NextButton>
+          <NavArea>
+            {
+              this.props.currentSection > 1 &&
+              <NavLink to={`/timer/${this.props.currentSection - 1}`}>
+                <PrevioutSectionButton />
+              </NavLink>
+            }
+            {
+              this.props.currentSection < this.props.sectionLength &&
               <NavLink to={`/timer/${this.props.currentSection + 1}`}>
                 <NextSectionButton />
               </NavLink>
-            </NextButton>
-          }
+            }
+          </NavArea>
         </ControlWrapper>
       );
     } else {
@@ -69,14 +76,20 @@ class StyledControl extends React.PureComponent{
           <SidebarTrigger>
             <SidebarButton onClick={this.props.onSidebarTrigger} />
           </SidebarTrigger>
-          {
-            this.props.currentSection < this.props.sectionLength &&
-            <NextButton>
+          <NavArea>
+            {
+              this.props.currentSection > 1 &&
+              <NavLink to={`/timer/${this.props.currentSection - 1}`}>
+                <PrevioutSectionButton />
+              </NavLink>
+            }
+            {
+              this.props.currentSection < this.props.sectionLength &&
               <NavLink to={`/timer/${this.props.currentSection + 1}`}>
                 <NextSectionButton />
               </NavLink>
-            </NextButton>
-          }
+            }
+          </NavArea>
         </ControlWrapper>
       );
     }

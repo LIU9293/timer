@@ -11,9 +11,9 @@ import {
 class Section extends React.PureComponent{
   static propTypes = {
     type: PropTypes.oneOf(['single', 'double']).isRequired,
-    config: PropTypes.object.isRequired,
-    section: PropTypes.number.isRequired,
-    MaxSection: PropTypes.number.isRequired,
+    globalConfig: PropTypes.object.isRequired,
+    currentSection: PropTypes.number.isRequired,
+    sectionLength: PropTypes.number.isRequired,
     onSidebarTrigger: PropTypes.func
   }
 
@@ -85,10 +85,23 @@ class Section extends React.PureComponent{
       <Wrapper>
         {
           type === 'single'
-          ?  <SingleTimer ref={timer => this.singleTimer = timer} length={this.props.config.limit} />
-          :  <DoubleTimer ref={timer => this.doubleTimer = timer} config={this.props.config} />
+          ?  <SingleTimer
+                ref={timer => this.singleTimer = timer}
+                length={this.props.config.limit}
+                highlight={this.state.pause}
+                currentSection={this.props.currentSection}
+             />
+          :  <DoubleTimer
+                ref={timer => this.doubleTimer = timer}
+                config={this.props.config}
+                currentSection={this.props.currentSection}
+             />
         }
-        <StyledBackground config={this.props.globalConfig} player={this.props.player} />
+        <StyledBackground
+          globalConfig={this.props.globalConfig}
+          player={this.props.player}
+          currentSection={this.props.currentSection}
+        />
         <StyledControl
           type={type}
           pause={this.state.pause}
