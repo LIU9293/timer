@@ -65,6 +65,7 @@ class Setup extends React.PureComponent{
     return(
       <FlexWrapper>
         <FormWrapper>
+          <h1>{"请填写信息"}</h1>
           <TextField
             floatingLabelText="正方学校"
             value={this.state.positiveName}
