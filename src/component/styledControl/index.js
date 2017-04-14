@@ -62,13 +62,13 @@ class StyledControl extends React.PureComponent{
     } else {
       return(
         <ControlWrapper>
+          <StopButton
+            onClick={this.props.onDoubleStop}
+          />
           <StartButton
             onStart={this.props.onDoubleStart}
             onPause={this.props.onDoublePause}
             pause={this.props.pause}
-          />
-          <StopButton
-            onClick={this.props.onDoubleStop}
           />
           <ChangeSideButton
             onClick={this.props.onChangeSide}

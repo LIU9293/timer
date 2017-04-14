@@ -83,7 +83,7 @@ module.exports = {
       'container': paths.appSrc + '/container',
       'Redux': paths.appSrc + '/redux',
       'config': paths.appSrc + '/config',
-      'public': paths.appSrc + '/public'
+      'public': paths.appPublic
     }
   },
 

@@ -89,7 +89,6 @@ class Setup extends React.PureComponent{
             floatingLabelText="赛制"
             value={this.state.type}
             onChange={this.onTypeChange}
-            style={{margin: '30px 0'}}
           >
             <MenuItem value={'xiaozusai'} primaryText="小组赛" />
             <MenuItem value={'taotaisai'} primaryText="淘汰赛" />

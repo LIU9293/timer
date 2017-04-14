@@ -7,7 +7,7 @@ import {
 
 const iconStyle = {
   fontSize: '40px',
-  color: 'rgba(91, 122, 121, 0.6)',
+  color: '#fff',
   margin: '10px'
 }
 
@@ -71,7 +71,7 @@ function StopButton(props){
   return(
     <ControlButton {...props}>
       <Icon
-        type={'close'}
+        type={'reload'}
         style={iconStyle}
       />
     </ControlButton>

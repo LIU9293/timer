@@ -1,6 +1,6 @@
 const basic = {
-  color: 'rgba(91, 122, 121, 0.9)',
-  fontSize: '30px'
+  color: '#fff',
+  fontSize: '40px'
 }
 
 export default basic;

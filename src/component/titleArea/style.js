@@ -4,7 +4,7 @@ export const TitleAreaWrapper = styled.div`
   width: 100%;
   height: 160px;
   position: absolute;
-  background: linear-gradient(to top, transparent, rgba(56, 217, 169, 0.7));
+  background: linear-gradient(to top, transparent, rgba(27, 110, 194, 0.5));
   display: flex;
   flex-direction: row;
   justify-content: space-between;

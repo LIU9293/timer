@@ -1,5 +1,5 @@
 .timer-class-last {
-  animation: zoomOut 1s infinite ease-out;
+  animation: zoomOut 1s infinite ease-in-out;
 }
 
 @keyframes zoomOut {

@@ -79,16 +79,28 @@ class Section extends React.PureComponent{
     }
   }
 
+  onSingleEnd = () => {
+    this.setState({
+      pause: false
+    });
+  }
+
   render(){
     const { type } = this.props;
     return(
       <Wrapper>
+        <StyledBackground
+          globalConfig={this.props.globalConfig}
+          player={this.props.player}
+          currentSection={this.props.currentSection}
+        />
         {
           type === 'single'
           ?  <SingleTimer
                 ref={timer => this.singleTimer = timer}
                 length={this.props.config.limit}
                 highlight={this.state.pause}
+                onEnd={this.onSingleEnd}
                 currentSection={this.props.currentSection}
              />
           :  <DoubleTimer
@@ -97,11 +109,6 @@ class Section extends React.PureComponent{
                 currentSection={this.props.currentSection}
              />
         }
-        <StyledBackground
-          globalConfig={this.props.globalConfig}
-          player={this.props.player}
-          currentSection={this.props.currentSection}
-        />
         <StyledControl
           type={type}
           pause={this.state.pause}
