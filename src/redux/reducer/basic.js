@@ -33,10 +33,13 @@ export const PlayerInfo = (state = PlayerInfoInit, action) => {
   }
 };
 
-export const Sections = (state = xiaozusai, action) => {
+export const Sections = (state = {name: '小组赛', sections: xiaozusai}, action) => {
   switch (action.type) {
     case 'UPDATE_SECTIONS':
-      return action.sections;
+      return {
+        sections: action.sections,
+        name: action.name
+      };
     default:
       return state;
   }

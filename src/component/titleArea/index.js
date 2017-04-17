@@ -28,11 +28,12 @@ class TitleArea extends React.PureComponent{
           <HeaderLabel>{player.positive.name}</HeaderLabel>
         </SideContainer>
         <CentralContainer>
-          <HeaderLabel>{this.props.globalConfig[`section_${this.props.currentSection}`].name}</HeaderLabel>
+          <HeaderLabel>{`第七届世界华语辩论锦标赛`}</HeaderLabel>
+          <HeaderLabel>{`${this.props.sectionName}`}</HeaderLabel>
         </CentralContainer>
         <SideContainer type={'negative'}>
           <HeaderLabel>{`反方: ${player.negative.title}`}</HeaderLabel>
-          <HeaderLabel>{player.positive.name}</HeaderLabel>
+          <HeaderLabel>{player.negative.name}</HeaderLabel>
         </SideContainer>
       </TitleAreaWrapper>
     )

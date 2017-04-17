@@ -93,6 +93,8 @@ class Section extends React.PureComponent{
           globalConfig={this.props.globalConfig}
           player={this.props.player}
           currentSection={this.props.currentSection}
+          sectionName={this.props.sectionName}
+          sectionLength={this.props.sectionLength}
         />
         {
           type === 'single'

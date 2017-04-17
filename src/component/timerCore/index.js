@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Howl } from 'howler';
+
+const bell1 = require('public/bell1.m4a');
+const bell2 = require('public/bell2.m4a');
+const bell3 = require('public/bell3.m4a');
 
 class TimerCore extends React.PureComponent{
   static propTypes = {
@@ -10,6 +15,7 @@ class TimerCore extends React.PureComponent{
     onGoing: PropTypes.func,
     onStart: PropTypes.func,
     onPause: PropTypes.func,
+    showTimeAlert: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -20,6 +26,7 @@ class TimerCore extends React.PureComponent{
     onGoing: null,
     onStart: null,
     onPause: null,
+    showTimeAlert: true,
   }
 
   componentWillUnmount(){
@@ -41,6 +48,12 @@ class TimerCore extends React.PureComponent{
     }
   }
 
+  componentDidMount() {
+    this.bell1 = new Howl({src: bell1});
+    this.bell2 = new Howl({src: bell2});
+    this.bell3 = new Howl({src: bell3});
+  }
+
   getTime = (sec) => {
     const min = parseInt(sec/60, 10);
     let seconds = sec - (60 * min);
@@ -59,8 +72,17 @@ class TimerCore extends React.PureComponent{
 
   minusOne = () => {
     if(this.state.secondsLeft <= 0){
+      if(this.props.showTimeAlert){
+        this.bell2.play();
+      }
       this.onEnd();
       return;
+    }
+    if(this.state.secondsLeft === 31 && this.props.showTimeAlert){
+      this.bell1.play();
+    }
+    if(this.state.secondsLeft === 5 && this.props.showTimeAlert){
+      this.bell3.play();
     }
     this.setState({
       secondsLeft: this.state.secondsLeft - 1,
@@ -76,6 +98,9 @@ class TimerCore extends React.PureComponent{
       return;
     }
     this.t = setInterval(this.minusOne, 1000);
+    if(this.state.secondsLeft < 5 && this.props.showTimeAlert){
+      this.bell3.play();
+    }
     this.setState({
       going: true,
     }, this.props.onStart);
@@ -85,6 +110,9 @@ class TimerCore extends React.PureComponent{
     if(this.t){
       clearInterval(this.t);
       this.t = null;
+    }
+    if(this.state.secondsLeft < 5 && this.props.showTimeAlert){
+      this.bell3.pause();
     }
     this.setState({
       going: false,
@@ -114,7 +142,7 @@ class TimerCore extends React.PureComponent{
   }
 
   render(){
-    const lastTen = this.state.secondsLeft < 10 && this.state.going;
+    const lastTen = this.state.secondsLeft < 6 && this.state.going;
     return(
       <div
         style={this.props.style}
